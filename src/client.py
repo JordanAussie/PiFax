@@ -49,5 +49,5 @@ def send_file(filename):
         client_socket.close()
 
 if __name__ == "__main__":
-    send_file("test.pdf")  # Replace with the path to your file
+    send_file("test.exe")  # Replace with the path to your file
 
