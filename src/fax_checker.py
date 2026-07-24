@@ -77,6 +77,10 @@ def check_for_faxes():
                 bytes_received += len(chunk)
                 
         print(f"[+] Fax saved locally as: {save_filename}\n")
+        print("[+] Printing fax now...")
+        os.system(f'lp downloaded_{filename}')
+        time.sleep(5)
+        os.system(f'rm downloaded_{filename}')
         return True
         
     except (socket.error, ConnectionResetError, BrokenPipeError):
