@@ -12,11 +12,11 @@ id = 'none'
 
 def connect_and_auth():
     global client_socket, id
-    if not os.path.exists("token.txt"):
+    if not os.path.exists("/token/token.txt"):
         print("[-] Error: No token.txt found. Please run client.py first to register.")
         exit(1)
         
-    with open("token.txt", "r") as file:
+    with open("/token/token.txt", "r") as file:
         secret_token = file.read().strip()
         
     if 'none' in secret_token.lower() or not secret_token:
