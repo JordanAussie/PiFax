@@ -100,6 +100,7 @@ def user_input():
         os.system('echo "WantedBy=multi-user.target" >> ../src/pifax.service')
         os.system('sudo mv ../src/pifax.service /etc/systemd/system/')
         os.system('sudo systemctl daemon-reload')
+        os.system('mv ../src/fax_checker.py /pifax-python/')
         enbsysd = input('Would you like to enable this service at startup? Y|N: ')
         if enbsysd == "Y" or enbsysd == "y":
             print('Enabling service...')
@@ -148,6 +149,8 @@ def user_input():
         os.system('sudo systemctl start cups')
     else:
         pass
+    print('Warning: Systsem will restart...')
+    time.sleep(3)
     os.system('sudo reboot now')
 
 if __name__ == '__main__':
