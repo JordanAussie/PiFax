@@ -18,11 +18,11 @@ def sign_on():
 
 def get_id():
     global id
-    if not os.path.exists("token.txt"):
-        with open("token.txt", "w") as file:
+    if not os.path.exists("/token/token.txt"):
+        with open("/token/token.txt", "w") as file:
             file.write("none")
 
-    with open("token.txt", "r") as file:
+    with open("/token/token.txt", "r") as file:
         secret_token = file.read().strip()
 
     if 'none' in secret_token.lower() or not secret_token:
@@ -34,7 +34,7 @@ def get_id():
         assigned_id, new_token = response.split(":", 1)
         
         id = assigned_id
-        with open("token.txt", "w") as file:
+        with open("/token/token.txt", "w") as file:
             file.write(new_token)
             
         print(f'[+] System registration complete!')
@@ -57,7 +57,7 @@ def get_id():
 def user_input(user_id):
     global filename
     print(f"""
-PiFax-{user_id}        Rev 1.1
+PiFax-{user_id} | Rev 1.1
 =============================
 Welcome to PiFax, the modern
 fax system for Raspberry Pi!
