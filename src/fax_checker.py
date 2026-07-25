@@ -66,7 +66,7 @@ def check_for_faxes():
         # Stream the fax data down from the server
         save_filename = f"downloaded_{filename}"
         bytes_received = 0
-        with open(save_filename, "wb") as f:
+        with open(f"/pifax-python/{save_filename}", "wb") as f:
             while bytes_received < filesize:
                 remaining = filesize - bytes_received
                 chunk_to_read = min(BUFFER_SIZE, remaining)
@@ -78,9 +78,9 @@ def check_for_faxes():
                 
         print(f"[+] Fax saved locally as: {save_filename}\n")
         print("[+] Printing fax now...")
-        os.system(f'lp downloaded_{filename}')
+        os.system(f'lp /pifax-python/downloaded_{filename}')
         time.sleep(5)
-        os.system(f'rm downloaded_{filename}')
+        os.system(f'rm /pifax-python/downloaded_{filename}')
         return True
         
     except (socket.error, ConnectionResetError, BrokenPipeError):
