@@ -3,7 +3,7 @@ import os
 import struct
 
 # Network configuration
-SERVER_IP = "192.168.1.216"  # Change to your actual server IP address
+SERVER_IP = "69.23.63.226"
 SERVER_PORT = 5001
 BUFFER_SIZE = 4096
 

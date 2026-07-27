@@ -2,7 +2,7 @@ import os
 import time
 import socket
 
-SERVER_IP = "192.168.1.216"
+SERVER_IP = "69.23.63.226"
 SERVER_PORT = 5001
 
 id = 'none'
@@ -72,6 +72,7 @@ def startup():
         print('Installing dependancies: CUPS...')
         os.system('sudo apt install cups -y')
         os.system('sudo mkdir /token/ && sudo chmod 777 /token/ && mv ../src/token.txt /token/')
+        os.system('sudo mkdir /pifax-python && sudo chmod 777 /pifax-python && mv ../src/client.py /pifax-python/')
         print('Getting a new auth token from server...')
         sign_on()
         get_id()
@@ -103,7 +104,6 @@ def user_input():
         os.system('echo "WantedBy=multi-user.target" >> ../src/pifax.service')
         os.system('sudo mv ../src/pifax.service /etc/systemd/system/')
         os.system('sudo systemctl daemon-reload')
-        os.system('sudo mkdir /pifax-python/ && sudo chmod 777 /pifax-python/')
         os.system('mv ../src/fax_checker.py /pifax-python/')
         enbsysd = input('Would you like to enable this service at startup? Y|N: ')
         if enbsysd == "Y" or enbsysd == "y":
@@ -123,9 +123,8 @@ def user_input():
     print('=======================================Making Commands=======================================')
     mkecmd = input('Would you like to make any custom commands? Y|N: ')
     if mkecmd == "Y" or mkecmd == "y":
-        pfxcmd = input('Would yopu like to make a PiFax command? Y|N: ')
+        pfxcmd = input('Would you like to make a PiFax command? Y|N: ')
         if pfxcmd == "Y" or pfxcmd == "y":
-            os.system('mv ../src/client.py /pifax-python/')
             os.system('touch /pifax-python/PiFax')
             os.system('echo "python3 /pifax-python/client.py" > /pifax-python/PiFax')
             os.system('sudo mv /pifax-python/PiFax /usr/local/bin/')
