@@ -2,7 +2,7 @@ import os
 import time
 import socket
 
-SERVER_IP = "192.168.1.216"
+SERVER_IP = "69.23.63.226"
 SERVER_PORT = 5001
 
 id = 'none'
